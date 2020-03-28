@@ -1,0 +1,28 @@
+.mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,1),
+  0 1px 1px 0 rgba(0,0,0,1),
+  0 1px 3px 0 rgba(0,0,0,1);
+}
+
+.custom-sidenav-container {
+  position: inherit;
+  height: 100%;
+  display: inherit;
+  transform: inherit;
+}
+
+.mat-grid-tile .mat-card-content {
+  justify-content: center !important ;
+  align-items: center !important;
+  text-align: center;
+  padding-bottom: 5px;
+}
+
+.mat-nav-list a.active {
+  background-color: white;
+  color: #001519;
+}
+
+.mat-nav-list a:not(active) {
+  color: white;
+}

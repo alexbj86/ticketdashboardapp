@@ -1,0 +1,43 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="side" style="background-color: #001519;width: 230px;" position="start">
+    <mat-nav-list>
+      <mat-card-content>&nbsp;</mat-card-content>
+    </mat-nav-list>
+    <mat-nav-list>
+      <mat-grid-list [cols]="8" rowHeight="1:4">
+        <mat-grid-tile [colspan]="1"></mat-grid-tile>
+        <mat-grid-tile [colspan]="6">
+          <mat-card-content style="width: 100%">
+            <i class="material-icons" style="font-size: 50px;color: #989090;">account_circle</i>
+            <mat-label style="font-size: 15px; color: white;white-space: nowrap">alessandro buttarazzi</mat-label>
+          </mat-card-content>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1"></mat-grid-tile>
+      </mat-grid-list>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      <mat-card-content>&nbsp;</mat-card-content>
+    </mat-nav-list>
+    <mat-nav-list>
+        <a mat-list-item [routerLink]="['dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
+        <i class="material-icons" style="font-size: 18px">home</i>&nbsp;&nbsp;DASHBOARD
+      </a>
+    </mat-nav-list>
+    <mat-divider></mat-divider>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['scheduler']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
+        <i class="material-icons" style="font-size: 18px">schedule</i>&nbsp;&nbsp;SCHEDULER
+      </a>
+    </mat-nav-list>
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="['backlog']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
+        <i class="material-icons" style="font-size: 18px">assignment</i>&nbsp;&nbsp;BACKLOG
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
