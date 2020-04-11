@@ -1,0 +1,22 @@
+<app-header></app-header>
+<mat-card style="margin:20px auto; width: 25%;">
+    <mat-card-content style="margin-top: 20px;">
+        <mat-label style="margin: 3% 3% 0;font-size: 18px;">Login</mat-label>
+        <mat-divider style="width: 90%;margin-left: 3%; margin-right: 3%; margin-top: 5px;" ></mat-divider>
+        <form novalidate (ngSubmit)="onLogin(userForm)" [formGroup]="userForm" >
+            <mat-grid-list cols="1" rowHeight="1:1" >
+                <mat-error style="margin-top: 30px" *ngIf="showError">Username o password errati.</mat-error>
+                <mat-form-field style="width: 65%; margin-top: 10px; margin-left: 10%">
+                    <input matInput placeholder="username" id="username" formControlName="username">
+                </mat-form-field>
+                <mat-form-field style="width: 65%; margin-left: 10%">
+                    <input matInput type="password" placeholder="password" id="password" formControlName="password">
+                </mat-form-field>
+                <button mat-raised-button color="primary" style="margin-top: 15px; margin-left: 10%" [disabled]="!userForm.valid">Login</button>
+                <a mat-button routerLink="/signup" style="font-size: 12px;margin-left: 25%">Registrati</a>
+            </mat-grid-list>
+
+        </form>
+    </mat-card-content>
+</mat-card>
+<app-footer></app-footer>

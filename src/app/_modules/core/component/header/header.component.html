@@ -1,5 +1,5 @@
 <mat-toolbar class="container-fluid">
-  <button mat-icon-button id="menu" (click)="menu()" style="outline: none" disableRipple="true">
+  <button mat-icon-button id="menu" (click)="menu()" style="outline: none" disableRipple="true" *ngIf="showMenu">
     <mat-icon class="material-icons">menu</mat-icon>
   </button>
   <span class="spacer"></span>

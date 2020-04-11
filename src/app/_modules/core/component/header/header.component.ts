@@ -8,10 +8,12 @@ import { MenuService } from "../../../../_services/menu.service";
 })
 export class HeaderComponent implements OnInit {
 
+  showMenu: boolean
+
   constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-
+    sessionStorage.getItem("username") ? this.showMenu = true : this.showMenu = false
   }
 
   menu() {

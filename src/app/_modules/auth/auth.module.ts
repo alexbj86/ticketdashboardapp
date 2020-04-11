@@ -9,6 +9,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatCardModule} from "@angular/material/card";
 import { SchedulerComponent } from './component/scheduler/scheduler.component';
 import { BacklogComponent } from './component/backlog/backlog.component';
+import {AuthService} from "../../_services/auth.service";
+import {AuthGuardService} from "../../_services/auth-guard.service";
 
 
 
@@ -22,7 +24,7 @@ import { BacklogComponent } from './component/backlog/backlog.component';
     MatFormFieldModule,
     MatCardModule,
   ],
-  providers:[MenuService]
+  providers:[MenuService, AuthService, AuthGuardService]
 })
 export class AuthModule {
 

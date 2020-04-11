@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiGateway: 'http://172.20.0.5:8762/',
+  apiUserService: 'user-service/api/ticketdashboard/user/'
 };
 
 /*
