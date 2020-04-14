@@ -17,4 +17,28 @@ export class AuthService {
   get isLoggedIn() {
     return this.loggedInStatus
   }
+
+  public getToken(): string {
+    return localStorage.getItem("access_token")
+  }
+
+  public saveToken(token: string) {
+    localStorage.setItem("access_token", token)
+  }
+
+  public getUsername(): string {
+    return localStorage.getItem("username")
+  }
+
+  public saveUsername(username: string) {
+    localStorage.setItem("username", username)
+  }
+
+  public getKey(): string {
+    return localStorage.getItem("key")
+  }
+
+  public saveKey(key: string) {
+    localStorage.setItem("key", key)
+  }
 }

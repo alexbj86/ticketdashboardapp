@@ -1,17 +1,16 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthModule } from "./_modules/auth/auth.module";
-import { CoreModule } from "./_modules/core/core.module";
-import { HeaderComponent } from "./_modules/core/component/header/header.component";
-import { MatIconModule } from "@angular/material/icon";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatButtonModule } from "@angular/material/button";
-import { MatSidenavModule } from "@angular/material/sidenav";
-import {MenuService} from "./_services/menu.service";
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthModule} from "./_modules/auth/auth.module";
+import {CoreModule} from "./_modules/core/core.module";
+import {HeaderComponent} from "./_modules/core/component/header/header.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatTableModule} from "@angular/material/table";
 import {MenuComponent} from "./_modules/auth/component/menu/menu.component";
@@ -27,8 +26,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FooterComponent} from "./_modules/core/component/footer/footer.component";
-import {JwtInterceptorService} from "./_services/jwt-interceptor.service";
+import {JwtInterceptorService} from "./_helpers/jwt-interceptor.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {ErrorInterceptorService} from "./_helpers/error-interceptor.service";
 
 
 @NgModule({
@@ -59,7 +59,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
     MatInputModule,
     ReactiveFormsModule
   ],
-  providers: [MenuService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true}],
   exports: [
     HeaderComponent
   ],

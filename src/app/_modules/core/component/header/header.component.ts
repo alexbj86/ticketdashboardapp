@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(private menuService: MenuService) { }
 
   ngOnInit() {
-    sessionStorage.getItem("username") ? this.showMenu = true : this.showMenu = false
+    localStorage.getItem("access_token") ? this.showMenu = true : this.showMenu = false
   }
 
   menu() {

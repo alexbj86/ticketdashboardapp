@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MenuService} from "../../_services/menu.service";
 import { DashboardComponent } from './component/dashboard/dashboard.component';
 import {Router, RouterModule} from "@angular/router";
 import {MatSidenavModule} from "@angular/material/sidenav";
@@ -10,7 +9,10 @@ import {MatCardModule} from "@angular/material/card";
 import { SchedulerComponent } from './component/scheduler/scheduler.component';
 import { BacklogComponent } from './component/backlog/backlog.component';
 import {AuthService} from "../../_services/auth.service";
-import {AuthGuardService} from "../../_services/auth-guard.service";
+import {AuthGuardService} from "../../_helpers/auth-guard.service";
+import {HTTP_INTERCEPTORS} from "@angular/common/http";
+import {JwtInterceptorService} from "../../_helpers/jwt-interceptor.service";
+import {ErrorInterceptorService} from "../../_helpers/error-interceptor.service";
 
 
 
@@ -24,7 +26,7 @@ import {AuthGuardService} from "../../_services/auth-guard.service";
     MatFormFieldModule,
     MatCardModule,
   ],
-  providers:[MenuService, AuthService, AuthGuardService]
+  providers:[AuthService, AuthGuardService,{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}]
 })
 export class AuthModule {
 

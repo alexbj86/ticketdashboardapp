@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiGateway: 'http://172.20.0.5:8762/',
-  apiUserService: 'user-service/api/ticketdashboard/user/'
+  apiUserService: 'user-service/api/v1/ticketdashboard/user/'
 };
 
 /*

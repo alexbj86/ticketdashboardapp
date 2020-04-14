@@ -2,9 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { PublicRoutingModule } from './public-routing.module';
-import { HttpClientModule } from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { UserService } from "../../_services/user.service";
-import { AuthGuardService } from "../../_services/auth-guard.service";
+import { AuthGuardService } from "../../_helpers/auth-guard.service";
+import {JwtInterceptorService} from "../../_helpers/jwt-interceptor.service";
 
 
 @NgModule({
@@ -14,6 +15,6 @@ import { AuthGuardService } from "../../_services/auth-guard.service";
     HttpClientModule,
     PublicRoutingModule
   ],
-  providers: [UserService, AuthGuardService]
+  providers: [UserService, AuthGuardService, {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}]
 })
 export class PublicModule { }

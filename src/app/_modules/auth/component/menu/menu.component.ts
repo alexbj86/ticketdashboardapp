@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from "@angular/material/sidenav";
 import {MenuService} from "../../../../_services/menu.service";
+import {AuthService} from "../../../../_services/auth.service";
+import {UserService} from "../../../../_services/user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -11,11 +14,17 @@ export class MenuComponent implements OnInit {
 
   @ViewChild('sidenav', {static: true})
   public sidenav: MatSidenav;
+  userLogged: string
 
-  constructor(private menuService: MenuService) { }
+  constructor(private menuService: MenuService, private authService: AuthService, public userService:UserService, private route: Router) { }
 
   ngOnInit() {
     this.menuService.setSidenav(this.sidenav);
+    this.userLogged = this.authService.getUsername();
   }
 
+  public logout() {
+    this.userService.logout();
+    this.route.navigate(['ticketdashboard/login'])
+  }
 }

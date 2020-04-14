@@ -68,6 +68,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "evalSourceMap": false,
           "options": {
             "browserTarget": "ticketdashboardApp:build"
           },

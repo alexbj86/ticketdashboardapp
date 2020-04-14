@@ -4,9 +4,28 @@
         <mat-label style="margin: 3% 3% 0;font-size: 18px;">Login</mat-label>
         <mat-divider style="width: 90%;margin-left: 3%; margin-right: 3%; margin-top: 5px;" ></mat-divider>
         <form novalidate (ngSubmit)="onLogin(userForm)" [formGroup]="userForm" >
-            <mat-grid-list cols="1" rowHeight="1:1" >
-                <mat-error style="margin-top: 30px" *ngIf="showError">Username o password errati.</mat-error>
-                <mat-form-field style="width: 65%; margin-top: 10px; margin-left: 10%">
+            <mat-grid-list cols="1" rowHeight="10.5:1.7" >
+                <mat-grid-tile>
+                    <mat-error style="margin-top: 10px;" *ngIf="error?.isError">{{error?.descError}}</mat-error>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field style="width: 90%;">
+                        <input matInput placeholder="username" id="username" formControlName="username">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field style="width: 90%;" >
+                        <input matInput type="password" placeholder="password" id="password" formControlName="password">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button mat-raised-button color="primary" [disabled]="!userForm.valid">Login</button>
+                    <a mat-button routerLink="/signup" style="font-size: 12px;margin-left: 25%">Registrati</a>
+                </mat-grid-tile>
+            </mat-grid-list>
+            <!--
+
+                 <mat-form-field style="width: 65%; margin-top: 30px; margin-left: 10%;">
                     <input matInput placeholder="username" id="username" formControlName="username">
                 </mat-form-field>
                 <mat-form-field style="width: 65%; margin-left: 10%">
@@ -14,8 +33,8 @@
                 </mat-form-field>
                 <button mat-raised-button color="primary" style="margin-top: 15px; margin-left: 10%" [disabled]="!userForm.valid">Login</button>
                 <a mat-button routerLink="/signup" style="font-size: 12px;margin-left: 25%">Registrati</a>
-            </mat-grid-list>
 
+            -->
         </form>
     </mat-card-content>
 </mat-card>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {UserService} from "./user.service";
+import {UserService} from "../_services/user.service";
 import {catchError} from "rxjs/operators";
 
 
@@ -38,8 +38,7 @@ export class ErrorInterceptorService implements HttpInterceptor{
 
       // err.error is not null, if the ResponsenEntity contains an Exception
       // err.error.message will give the custom message send from the server
-      const error = err.error.message || err.statusText
-      return throwError(error)
+      return throwError(err.error)
     }))
   }
 
