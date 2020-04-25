@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {UserService} from "../_services/user.service";
+import {UserService} from "../../../_services/user.service";
 import {catchError} from "rxjs/operators";
 
 
@@ -15,7 +15,7 @@ import {catchError} from "rxjs/operators";
 @Injectable({
   providedIn: 'root'
 })
-export class ErrorInterceptorService implements HttpInterceptor{
+export class ErrorInterceptor implements HttpInterceptor{
 
   constructor(private userService: UserService) { }
 
@@ -28,7 +28,7 @@ export class ErrorInterceptorService implements HttpInterceptor{
    * @memberof ErrorInterceptor
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
+    console.log("call error interceptor")
     return next.handle(req).pipe(catchError(err => {
       if(err.status === 401) {
 

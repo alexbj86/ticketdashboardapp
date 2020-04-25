@@ -9,10 +9,10 @@ import {MatCardModule} from "@angular/material/card";
 import { SchedulerComponent } from './component/scheduler/scheduler.component';
 import { BacklogComponent } from './component/backlog/backlog.component';
 import {AuthService} from "../../_services/auth.service";
-import {AuthGuardService} from "../../_helpers/auth-guard.service";
+import {AuthGuardService} from "../../_services/auth-guard.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {JwtInterceptorService} from "../../_helpers/jwt-interceptor.service";
-import {ErrorInterceptorService} from "../../_helpers/error-interceptor.service";
+import {JwtInterceptor} from "../core/interceptors/jwt-interceptor.service";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -24,9 +24,9 @@ import {ErrorInterceptorService} from "../../_helpers/error-interceptor.service"
     MatSidenavModule,
     MatTableModule,
     MatFormFieldModule,
-    MatCardModule,
+    MatCardModule
   ],
-  providers:[AuthService, AuthGuardService,{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptorService, multi: true}]
+  providers:[AuthService, AuthGuardService,{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}]
 })
 export class AuthModule {
 

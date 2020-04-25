@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MenuService} from "../../_services/menu.service";
+import {FormsModule} from "@angular/forms";
+import {FormValidateDirective} from "./directive/form-validate.directive";
 
 
 @NgModule({
-  declarations: [],
+  declarations: [FormValidateDirective],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
-  providers: [MenuService]
+  providers: [],
+  exports: [FormValidateDirective]
 })
 export class CoreModule { }

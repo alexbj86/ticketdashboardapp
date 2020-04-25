@@ -4,7 +4,7 @@ import {MenuComponent} from "./component/menu/menu.component";
 import {DashboardComponent} from "./component/dashboard/dashboard.component";
 import {SchedulerComponent} from "./component/scheduler/scheduler.component";
 import {BacklogComponent} from "./component/backlog/backlog.component";
-import {AuthGuardService} from "../../_helpers/auth-guard.service";
+import {AuthGuardService} from "../../_services/auth-guard.service";
 
 
 const routes: Routes = [

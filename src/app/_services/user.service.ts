@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpBackend, HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../_model/user';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {AuthService} from "./auth.service";
+import {UserBase} from "../_model/userBase";
 
-const httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
-}
-
-    @Injectable({
+@Injectable({
     providedIn: 'root'
 })
 export class UserService {
 
-    constructor(private http: HttpClient, private authService: AuthService) { }
+    httpOptions: HttpHeaders
+    constructor(private http: HttpClient, private httpBackend: HttpBackend) {
+        this.httpOptions = new HttpHeaders({'Content-Type': 'application/json'})
+    }
 
-    login(user: User):Observable<any> {
-        return this.http.post(`${environment.apiGateway}`.concat(`${environment.apiUserService}`).concat('login'), user, httpOptions)
+    login(user: UserBase):Observable<any> {
+        return this.http.post(`${environment.apiUserService}`.concat('login'), user, {headers: this.httpOptions, responseType: 'text'})
     }
 
     /**
@@ -29,5 +28,11 @@ export class UserService {
         localStorage.removeItem("username")
         localStorage.removeItem("key")
         localStorage.removeItem("access_token")
+    }
+
+    signup(user: User) {
+        //HttpBackend non permette l'invocazione del interceptor
+        this.http = new HttpClient(this.httpBackend)
+        return this.http.post(`${environment.apiUserService}`.concat('signup'), user, {headers: this.httpOptions, responseType: 'text' })
     }
 }

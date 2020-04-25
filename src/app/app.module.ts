@@ -26,14 +26,14 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FooterComponent} from "./_modules/core/component/footer/footer.component";
-import {JwtInterceptorService} from "./_helpers/jwt-interceptor.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
-import {ErrorInterceptorService} from "./_helpers/error-interceptor.service";
+import {ErrorInterceptor} from "./_modules/core/interceptors/error-interceptor.service";
+import {SignupComponent} from "./_modules/public/component/signup/signup.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent, HeaderComponent, FooterComponent, MenuComponent, LoginComponent
+    AppComponent, HeaderComponent, FooterComponent, MenuComponent, LoginComponent,SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +59,7 @@ import {ErrorInterceptorService} from "./_helpers/error-interceptor.service";
     MatInputModule,
     ReactiveFormsModule
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   exports: [
     HeaderComponent
   ],

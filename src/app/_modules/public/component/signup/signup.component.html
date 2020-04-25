@@ -1,0 +1,55 @@
+<app-header></app-header>
+<mat-card style="margin: 20px auto; width: 45%;">
+    <mat-card-content style="margin-top: 20px">
+        <mat-label style="margin: 3% 3% 0; font-size: 18px">Registrati</mat-label>
+        <mat-divider style="width: 90%; margin-left: 3%; margin-right: 3%; margin-top: 5px"></mat-divider>
+        <form (ngSubmit)="saveUser(signupForm)" [formGroup]="signupForm">
+            <mat-grid-list cols="2" rowHeight="80px">
+                <mat-grid-tile colspan="2">
+                    <mat-error style="margin-top: 10px" *ngIf="this.messages.showMessages">
+                        <ul>
+                            <mat-label *ngFor="let error of this.messages.descMessages">
+                                <li>{{error}}</li>
+                            </mat-label>
+                        </ul>
+                    </mat-error>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 90%; height: 20%;margin-bottom: 35px;">
+                        <mat-label>Username</mat-label>
+                        <input matInput id="username" style="font-size: 13px" name="username"
+                               formControlName="username" formValidateDirective [messages]="messages" errMsg="Username campo obbligatorio">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 90%; height: 20%;margin-bottom: 35px;">
+                        <mat-label>Api Key</mat-label>
+                        <input matInput id="key" style="font-size: 13px" name="Api Key"
+                               formControlName="apiKey" formValidateDirective [messages]="messages" errMsg="Api Key campo obbligatorio">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 90%; height: 20%;margin-bottom: 35px;">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" style="font-size: 13px"
+                               formControlName="password" formValidateDirective [messages]="messages" errMsg="Password non valida">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 90%; height: 20%;margin-bottom: 35px;">
+                        <mat-label>Conferma Password</mat-label>
+                        <input matInput type="password" style="font-size: 13px" formControlName="confirmPassword"
+                               formValidateDirective [messages]="messages" errMsg="Le password digitate non coincidono.">
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <button mat-raised-button type="submit" color="primary" style="right: 0;position: absolute; margin-right: 20px" [disabled]="!signupForm.valid">Salva</button>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <a mat-button routerLink="/ticketdashboard/login" style="left: 0; position:absolute; margin-left: 20px">Login</a>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </form>
+    </mat-card-content>
+</mat-card>
+<app-footer></app-footer>

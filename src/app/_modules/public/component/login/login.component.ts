@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../../../../_services/user.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../../../_model/user";
 import {AuthService} from "../../../../_services/auth.service";
 import {Router} from "@angular/router";
-import {UserError} from "../../../../_model/userError";
+import {Messages} from "../../../../_model/messages";
+import {UserBase} from "../../../../_model/userBase";
 
 @Component({
   selector: 'login',
@@ -14,14 +14,15 @@ import {UserError} from "../../../../_model/userError";
 export class LoginComponent implements OnInit {
 
   userForm: FormGroup;
-  user: User
-  error: UserError
+  user: UserBase
+  messages: Messages
 
   constructor(private userService: UserService, private fb: FormBuilder, private authService: AuthService, private route: Router) {
 
   }
 
   ngOnInit() {
+
     this.userForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onLogin(userForm) {
+  login(userForm) {
     console.log('Username: ' + userForm.value.username)
     console.log('Password:' + userForm.value.password)
 
@@ -42,9 +43,9 @@ export class LoginComponent implements OnInit {
       this.authService.setLoggedIn(true)
       this.route.navigate(["/ticketdashboard/auth/dashboard"])
     }, error => {
-      this.error = {
-        isError: true,
-        descError: error
+      this.messages = {
+        showMessages: true,
+        descMessages: error
       }
     })
   }
