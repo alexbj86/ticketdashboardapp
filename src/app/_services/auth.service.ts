@@ -31,6 +31,7 @@ export class AuthService {
   }
 
   public saveUsername(username: string) {
+    console.log("username: " + username)
     localStorage.setItem("username", username)
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
-import {UserService} from "../../../_services/user.service";
+import {InterceptorSkip, UserService} from "../../../_services/user.service";
 import {catchError} from "rxjs/operators";
 
 
@@ -28,19 +28,18 @@ export class ErrorInterceptor implements HttpInterceptor{
    * @memberof ErrorInterceptor
    */
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const clonedRequest = req.clone({ headers: req.headers.set('Authorization', 'Bearer') });
     console.log("call error interceptor")
-    return next.handle(req).pipe(catchError(err => {
-      if(err.status === 401) {
+      return next.handle(clonedRequest).pipe(catchError(err => {
+        if(err.status === 401) {
 
-        // auto logout if 401 response returned from api
-        this.userService.logout()
-      }
+          // auto logout if 401 response returned from api
+          this.userService.logout()
+        }
 
-      // err.error is not null, if the ResponsenEntity contains an Exception
-      // err.error.message will give the custom message send from the server
-      return throwError(err.error)
-    }))
+        // err.error is not null, if the ResponsenEntity contains an Exception
+        // err.error.message will give the custom message send from the server
+        return throwError(err.error)
+      }))
   }
-
-
 }

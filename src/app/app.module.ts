@@ -26,9 +26,9 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {FooterComponent} from "./_modules/core/component/footer/footer.component";
+import {SignupComponent} from "./_modules/public/component/signup/signup.component";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {ErrorInterceptor} from "./_modules/core/interceptors/error-interceptor.service";
-import {SignupComponent} from "./_modules/public/component/signup/signup.component";
 
 
 @NgModule({

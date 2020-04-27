@@ -6,9 +6,9 @@
         <form (ngSubmit)="saveUser(signupForm)" [formGroup]="signupForm">
             <mat-grid-list cols="2" rowHeight="80px">
                 <mat-grid-tile colspan="2">
-                    <mat-error style="margin-top: 10px" *ngIf="this.messages.showMessages">
+                    <mat-error style="margin-top: 10px" *ngIf="this.messages.showMessages" >
                         <ul>
-                            <mat-label *ngFor="let error of this.messages.descMessages">
+                            <mat-label *ngFor="let error of this.messages.descMessages" [ngStyle]="{'color': this.messages.msgColor}">
                                 <li>{{error}}</li>
                             </mat-label>
                         </ul>

@@ -5,6 +5,7 @@ import {AuthService} from "../../../../_services/auth.service";
 import {Router} from "@angular/router";
 import {Messages} from "../../../../_model/messages";
 import {UserBase} from "../../../../_model/userBase";
+import {error} from "util";
 
 @Component({
   selector: 'login',
@@ -39,13 +40,15 @@ export class LoginComponent implements OnInit {
       password: userForm.value.password
     }
 
-    this.userService.login(this.user).subscribe(user => {
+    this.userService.login(this.user).toPromise().then(user => {
       this.authService.setLoggedIn(true)
       this.route.navigate(["/ticketdashboard/auth/dashboard"])
-    }, error => {
+    }).catch(error => {
+      console.log("login error:" + this.messages)
       this.messages = {
         showMessages: true,
-        descMessages: error
+        descMessages: error,
+        msgColor: ''
       }
     })
   }

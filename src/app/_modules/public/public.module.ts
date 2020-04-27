@@ -7,6 +7,7 @@ import { UserService } from "../../_services/user.service";
 import { AuthGuardService } from "../../_services/auth-guard.service";
 import {JwtInterceptor} from "../core/interceptors/jwt-interceptor.service";
 import {CoreModule} from "../core/core.module";
+import {ErrorInterceptor} from "../core/interceptors/error-interceptor.service";
 
 
 @NgModule({
