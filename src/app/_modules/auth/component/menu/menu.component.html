@@ -1,7 +1,13 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="side" style="background-color: #001519;width: 230px;" position="start">
     <mat-nav-list>
-      <mat-card-content>&nbsp;</mat-card-content>
+      <mat-card-content>
+        <!--
+        TOGGLE FOR ITEMS MENU MINIATURE
+        <mat-slide-toggle style="position: absolute; right: 20px;" aria-label="false" disableRipple="true"></mat-slide-toggle>
+        -->
+        &nbsp;
+      </mat-card-content>
     </mat-nav-list>
     <mat-nav-list>
       <mat-grid-list [cols]="8" rowHeight="1:4">
@@ -25,23 +31,23 @@
     <mat-nav-list>
       <mat-card-content>&nbsp;</mat-card-content>
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list disableRipple="true">
         <a mat-list-item [routerLink]="['dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
         <i class="material-icons" style="font-size: 18px">home</i>&nbsp;&nbsp;DASHBOARD
       </a>
     </mat-nav-list>
     <mat-divider></mat-divider>
-    <mat-nav-list>
+    <mat-nav-list disableRipple="true">
       <a mat-list-item [routerLink]="['scheduler']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
         <i class="material-icons" style="font-size: 18px">schedule</i>&nbsp;&nbsp;SCHEDULER
       </a>
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list disableRipple="true">
       <a mat-list-item [routerLink]="['backlog']" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px">
         <i class="material-icons" style="font-size: 18px">assignment</i>&nbsp;&nbsp;BACKLOG
       </a>
     </mat-nav-list>
-    <mat-nav-list>
+    <mat-nav-list disableRipple="true">
       <a mat-list-item (click)="logout()" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true}" style="font-size: 13px;position:absolute; bottom: 0">
         <i class="material-icons" style="font-size: 18px">exit_to_app</i>&nbsp;&nbsp;LOGOUT
       </a>

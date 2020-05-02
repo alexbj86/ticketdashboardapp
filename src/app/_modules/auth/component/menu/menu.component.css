@@ -26,3 +26,28 @@
 .mat-nav-list a:not(active) {
   color: white;
 }
+
+/*
+  MAT-SLIDE-TOGGLE CSS
+*/
+
+/deep/ .mat-slide-toggle-thumb {
+  height: 13px !important;
+  width: 13px !important;
+  position: absolute;
+  top: 4px;
+}
+
+/deep/ .mat-slide-toggle-bar {
+  height: 15px !important;
+  width: 30px !important;
+  background-color: #666;
+}
+
+/deep/ .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #FFF;
+}
+
+/deep/ .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #666;
+}

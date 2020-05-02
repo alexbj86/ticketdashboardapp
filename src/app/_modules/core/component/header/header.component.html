@@ -1,6 +1,22 @@
 <mat-toolbar class="container-fluid">
-  <button mat-icon-button id="menu" (click)="menu()" style="outline: none" disableRipple="true" *ngIf="showMenu">
-    <mat-icon class="material-icons">menu</mat-icon>
-  </button>
-  <span class="spacer"></span>
+  <mat-grid-list cols="6" style="width: 100%;" rowHeight="100%" *ngIf="showMenu">
+
+    <mat-grid-tile colspan="1">
+      <button mat-icon-button id="menu" (click)="menu()" style="outline: none" disableRipple="true">
+        <mat-icon class="material-icons">menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+    </mat-grid-tile>
+    <mat-grid-tile style="font: 14px 'Lato', Arial, sans-serif; font-weight: bold" colspan="4">
+      {{getPageTitle()}}
+    </mat-grid-tile>
+
+    <mat-grid-tile colspan="1">
+      <mat-form-field style="font: 13px 'Lato', Arial, sans-serif; color: #666; position: absolute; left: 5px; width: 120px">
+        <input matInput placeholder="Cerca Ticket..." id="ticketSearch" >
+      </mat-form-field>
+      <i class="material-icons" style="font-size: 20px; position: absolute; left: 105px">search</i>
+      <i class="material-icons" style="font-size: 30px; position: absolute; right: 40px; color: #666">notifications</i>
+    </mat-grid-tile>
+  </mat-grid-list>
 </mat-toolbar>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MenuService} from "../../../../_services/menu.service";
 
 @Component({
   selector: 'app-scheduler',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private menuService: MenuService) { }
 
   ngOnInit() {
+    this.menuService.setPageTitle("SCHEDULER")
   }
 
 }

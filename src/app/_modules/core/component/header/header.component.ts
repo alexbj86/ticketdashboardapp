@@ -16,8 +16,11 @@ export class HeaderComponent implements OnInit {
     localStorage.getItem("access_token") ? this.showMenu = true : this.showMenu = false
   }
 
-  menu() {
+  public menu() {
     this.menuService.toggle();
   }
 
+  public getPageTitle(): string {
+    return this.menuService.getPageTitle();
+  }
 }

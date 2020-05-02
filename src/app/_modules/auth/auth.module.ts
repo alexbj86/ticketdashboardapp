@@ -13,19 +13,21 @@ import {AuthGuardService} from "../../_services/auth-guard.service";
 import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {JwtInterceptor} from "../core/interceptors/jwt-interceptor.service";
 import {FormsModule} from "@angular/forms";
+import {MatGridListModule} from "@angular/material/grid-list";
 
 
 
 @NgModule({
   declarations: [DashboardComponent, SchedulerComponent, BacklogComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatSidenavModule,
-    MatTableModule,
-    MatFormFieldModule,
-    MatCardModule
-  ],
+    imports: [
+        CommonModule,
+        RouterModule,
+        MatSidenavModule,
+        MatTableModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatGridListModule
+    ],
   providers:[AuthService, AuthGuardService,{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}]
 })
 export class AuthModule {

@@ -4,6 +4,8 @@ import {MenuService} from "../../../../_services/menu.service";
 import {AuthService} from "../../../../_services/auth.service";
 import {UserService} from "../../../../_services/user.service";
 import {Router} from "@angular/router";
+import {MatIconRegistry} from "@angular/material/icon";
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-menu',
@@ -16,7 +18,8 @@ export class MenuComponent implements OnInit {
   public sidenav: MatSidenav;
   userLogged: string
 
-  constructor(private menuService: MenuService, private authService: AuthService, public userService:UserService, private route: Router) { }
+  constructor(private menuService: MenuService, private authService: AuthService, public userService:UserService, private route: Router) {
+  }
 
   ngOnInit() {
     this.menuService.setSidenav(this.sidenav);
@@ -26,5 +29,6 @@ export class MenuComponent implements OnInit {
   public logout() {
     this.userService.logout();
     this.route.navigate(['ticketdashboard/login'])
+    this.menuService.setPageTitle('')
   }
 }
