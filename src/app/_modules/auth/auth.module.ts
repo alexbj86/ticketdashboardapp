@@ -14,6 +14,7 @@ import {HTTP_INTERCEPTORS} from "@angular/common/http";
 import {JwtInterceptor} from "../core/interceptors/jwt-interceptor.service";
 import {FormsModule} from "@angular/forms";
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatIconModule} from "@angular/material/icon";
 
 
 
@@ -26,7 +27,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
         MatTableModule,
         MatFormFieldModule,
         MatCardModule,
-        MatGridListModule
+        MatGridListModule,
+        MatIconModule
     ],
   providers:[AuthService, AuthGuardService,{provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}]
 })
