@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FormsModule} from "@angular/forms";
 import {FormValidateDirective} from "./directive/form-validate.directive";
+import {MatBadgeModule} from "@angular/material/badge";
 
 
 @NgModule({
@@ -11,6 +12,6 @@ import {FormValidateDirective} from "./directive/form-validate.directive";
     FormsModule
   ],
   providers: [],
-  exports: [FormValidateDirective]
+  exports: [FormValidateDirective, MatBadgeModule]
 })
 export class CoreModule { }

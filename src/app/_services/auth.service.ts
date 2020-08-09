@@ -8,7 +8,7 @@ export class AuthService {
 
   private loggedInStatus = false
 
-  constructor(private httpClient: HttpClient) { }
+  constructor() { }
 
   setLoggedIn(value: boolean) {
     this.loggedInStatus = value

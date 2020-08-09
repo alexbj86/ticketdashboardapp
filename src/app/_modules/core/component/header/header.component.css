@@ -11,3 +11,8 @@
 .spacer {
   flex: 1 1 0%;
 }
+
+.mat-badge-content {
+  background: #02212C;
+  color: #FFF;
+}
